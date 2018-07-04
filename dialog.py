@@ -5,6 +5,7 @@ from pathlib import Path
 import zipfile
 
 
+
 root = Tk()
 
 
@@ -15,11 +16,15 @@ def onOpen1():
                                                              , ("All files", "*.*"))))
 def get_userdata_dir():
     homed = str(Path.home()) + '\.converter\setup.ini'
-    print(homed)
-    if  Path(homed).exists():
-        print('Нету файла и директории. ХУЙ')
-    #p = Path()
-    #p.write_text('Hello world')
+    print(Path(homed).exists())
+    if not Path(homed).exists():
+     print('Нету файла и директории. ХУЙ')
+     p = str(Path.home()) + '\.converter'
+     Path(p).mkdir(parents=True, exist_ok=True)
+     b = open(homed, "w+", encoding = "utf-8")
+     b.write('файл с настройками;' + '\n')
+     print('создали!')
+     b.close()
 
 
 def onopendir2():
